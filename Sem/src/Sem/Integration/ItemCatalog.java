@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Contains call to the item database
+ * No longer in use, fused with external inventory as per task flow
  */
+@Deprecated
 public class ItemCatalog {
     private List<ItemData> items = new ArrayList<>();
 

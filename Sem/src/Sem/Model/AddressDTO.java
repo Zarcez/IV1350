@@ -1,5 +1,8 @@
 package Sem.Model;
 
+/**
+ * Handles all info about  store object
+ */
 public final class AddressDTO {
     private final String name;
     private final String street;

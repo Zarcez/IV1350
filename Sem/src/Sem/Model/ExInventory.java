@@ -58,6 +58,22 @@ public class ExInventory {
     }
 
     /**
+     * Used to get amount of an item in the inventory
+     * @param itemToGet the item to check
+     * @return  the amount of item, if no such item return -1 as there can't be negative amount of items in the real world and thus function as error
+     */
+    public int getItemAmount(SaleDTO itemToGet){
+        for(ItemData item: items){
+            if(matches(itemToGet.getItem().getItemID(),item)){
+                return item.getItemAmount();
+            }
+        }
+        return -1;
+    }
+
+
+
+    /**
      * Example items used for testing
      */
     private void addItems(){
@@ -77,7 +93,7 @@ public class ExInventory {
         private double itemVat;
         private int itemAmount;
 
-        public ItemData(Amount price, String itemName, double itemVat, String itemID, int itemAmount) {
+        private ItemData(Amount price, String itemName, double itemVat, String itemID, int itemAmount) {
             this.itemID = itemID;
             this.itemAmount = itemAmount;
             this.price = price;
@@ -86,10 +102,13 @@ public class ExInventory {
             this.itemID = itemID;
             }
 
-        public void setItemAmount(int itemAmount){
+        private void setItemAmount(int itemAmount){
             this.itemAmount = itemAmount;
         }
 
+        private int getItemAmount() {
+            return itemAmount;
+        }
     }
 
 

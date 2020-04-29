@@ -2,6 +2,9 @@ package Sem.Integration;
 
 import Sem.Model.Amount;
 
+/**
+ * The class to handle the item object and their properties
+ */
 public class ItemDTO {
     private final Amount price;
     private final String itemName;

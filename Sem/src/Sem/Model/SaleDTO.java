@@ -9,6 +9,11 @@ public class SaleDTO {
     private ItemDTO item;
     private int itemAmount;
 
+    /**
+     * Creates a new object with specified item and amount
+     * @param item
+     * @param itemAmount
+     */
     public SaleDTO(ItemDTO item, int itemAmount){
         this.item = item;
         this.itemAmount = itemAmount;

@@ -6,6 +6,9 @@ package Sem.Model;
 public class Register {
     private Amount amount;
 
+    /**
+     * As we have no specific value, creates the object with a amount of 0
+     */
     public Register(){
         amount = new Amount(0);
     }
