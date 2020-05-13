@@ -4,7 +4,11 @@ import Sem.Controller.Controller;
 import Sem.Integration.CatalogCreator;
 import Sem.Integration.ExCreator;
 import Sem.Integration.Printer;
+import Sem.Model.NoDatabaseException;
 import Sem.View.View;
+
+import java.io.IOException;
+
 
 public class Main {
 
@@ -14,11 +18,22 @@ public class Main {
      * @param args no command line parameters
      */
 
-    public static void main(String[] args) {
-        ExCreator exCreator = new ExCreator();
-        CatalogCreator catalogCreator = new CatalogCreator();
-        Printer printer = new Printer();
-        Controller controller = new Controller(exCreator,catalogCreator,printer);
-        new View(controller).sampleExecution();
+    public static void main(String[] args)  {
+        try {
+            ExCreator exCreator = new ExCreator();
+            CatalogCreator catalogCreator = new CatalogCreator();
+            Printer printer = new Printer();
+            Controller controller = new Controller(exCreator, catalogCreator, printer);
+            new View(controller).test();
+        }
+        catch (IOException exception){
+            System.out.println("Unable to start program");
+            exception.printStackTrace();
+        }
+        catch (NoDatabaseException exception){
+            System.out.println("Unable to start program");
+            exception.printStackTrace();
+        }
+
     }
 }

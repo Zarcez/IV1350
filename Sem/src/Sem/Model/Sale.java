@@ -17,6 +17,8 @@ public class Sale {
     private Amount total;
     private Amount totalNoTax;
 
+    private List<SaleObserver> saleObserver = new ArrayList<>();
+
     /**
      * Creates the objectes needed
      * @param exInventory
@@ -84,14 +86,40 @@ public class Sale {
         Amount change = payment.UppdatePayment(paid);
         if(change.getAmount() <= 0){
             UppdateExternal();
+            notifyObserver();
         }
         return change;
     }
 
+    /**
+     * Notify and uppdates observers
+     */
+    private void notifyObserver(){
+        for (SaleObserver obs: saleObserver){
+            obs.newPayment(total);
+        }
+    }
+
+    /**
+     * Add a single observer
+     * @param obs The observer to be added
+     */
+    public void addSaleObserver(SaleObserver obs){
+        saleObserver.add(obs);
+    }
+
+    /**
+     * Add a list of observers
+     * @param obs The list of observers
+     */
+    public void addSaleObservers(List<SaleObserver> obs){
+        saleObserver.addAll(obs);
+    }
 
     public Amount getPayment(){
         return payment.getAmount();
     }
+
 
     /**
      * Send all the SaleDTOs to the external inventory to update and the total to the external accounting

@@ -3,6 +3,9 @@ package Sem.Controller;
 import Sem.Integration.*;
 import Sem.Model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The controller class, all calls to the model go through this class
  */
@@ -13,6 +16,8 @@ public class Controller {
     private Printer printer;
     private Sale sale;
     private Register register;
+
+    private List<SaleObserver> saleObserver = new ArrayList<>();
 
     /**
      *
@@ -34,14 +39,17 @@ public class Controller {
     public void startNewSale()
     {
         this.sale = new Sale(exInventory,exAccounting);
+        sale.addSaleObservers(saleObserver);
     }
 
     /**
      * Search the external inventory for an item with matching ID
      * @param searchedItem The ID we are looking for
      * @return Returns the ItemDTO with the values for the item with the matching ID
+     * @throws NoItemException Throws if there is no item with correct ID
+     * @throws NoDatabaseException If no items where found
      */
-    public ItemDTO itemExists (String searchedItem){
+    public ItemDTO itemExists (String searchedItem) throws NoItemException, NoDatabaseException{
         return exInventory.findItem(searchedItem);
     }
 
@@ -90,6 +98,14 @@ public class Controller {
     public void print(){
         String receipt = sale.print();
         printer.printReciept(receipt);
+    }
+
+    /**
+     * Add new observer
+     * @param obs the observer to be added
+     */
+    public void addSaleObserver(SaleObserver obs){
+        saleObserver.add(obs);
     }
 
 }

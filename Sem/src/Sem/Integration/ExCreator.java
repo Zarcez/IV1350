@@ -9,7 +9,7 @@ import Sem.Model.ExInventory;
 public class ExCreator {
 
     private ExAccounting exAccounting = new ExAccounting();
-    private ExInventory exInventory = new ExInventory();
+    private ExInventory exInventory = new ExInventory(true);
 
     /**
      * Get external accounting

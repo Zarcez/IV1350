@@ -1,6 +1,7 @@
 package Sem.Model;
 
 import Sem.Integration.ItemDTO;
+import Sem.util.LogHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,23 +18,28 @@ public class ExInventory {
 
     /**
      * Creates a new list of items
+     * @param createItems Used for creating the database
      */
-    public ExInventory(){
-        addItems();
+    public ExInventory(boolean createItems){
+        if (createItems)
+            addItems();
+        if(items.size()<=0)
+            throw new NoDatabaseException();
     }
 
     /**
      * Based on a itemID, compares it to the items that exist trying to find one with same ID
      * @param searchedItem The itemID that the program is trying to find
      * @return The value of the item with the same ID, if no one is found, returns null
+     * @throws NoItemException if no item with the correct ID was found
+     * @throws NoDatabaseException If the array containing the items is empty
      */
-    public ItemDTO findItem(String searchedItem){
-        for (ItemData item : items){
-            if(matches(searchedItem, item))
-                return new ItemDTO(item.price,item.itemName,item.itemVat,item.itemID);
-        }
-
-        return null;
+    public ItemDTO findItem(String searchedItem) throws NoItemException{
+        for (ItemData item : items) {
+            if (matches(searchedItem, item))
+                return new ItemDTO(item.price, item.itemName, item.itemVat, item.itemID);
+            }
+        throw new NoItemException(searchedItem);
     }
 
     /**
