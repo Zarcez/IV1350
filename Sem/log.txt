@@ -1,0 +1,14 @@
+13 maj 2020 09:27:02 Exception was thrown: No item found with the ID D00004
+Sem.Integration.NoItemException: No item found with the ID D00004
+	at Sem.Integration.ExInventory.findItem(ExInventory.java:42)
+	at Sem.Controller.Controller.itemExists(Controller.java:53)
+	at Sem.View.View.sampleExecution(View.java:55)
+	at Sem.View.View.test(View.java:40)
+	at Sem.StartUp.Main.main(Main.java:27)
+13 maj 2020 09:27:13 Exception was thrown: No item found with the ID D00004
+Sem.Integration.NoItemException: No item found with the ID D00004
+	at Sem.Integration.ExInventory.findItem(ExInventory.java:42)
+	at Sem.Controller.Controller.itemExists(Controller.java:53)
+	at Sem.View.View.sampleExecution(View.java:55)
+	at Sem.View.View.test(View.java:41)
+	at Sem.StartUp.Main.main(Main.java:27)

@@ -1,5 +1,7 @@
 package Sem.Model;
 
+import Sem.Integration.ExAccounting;
+import Sem.Integration.ExInventory;
 import Sem.Integration.ItemDTO;
 
 import java.util.ArrayList;

@@ -2,8 +2,7 @@ package Sem.View;
 
 import Sem.Controller.Controller;
 import Sem.Integration.ItemDTO;
-import Sem.Model.NoDatabaseException;
-import Sem.Model.NoItemException;
+import Sem.Integration.NoItemException;
 import Sem.Model.Amount;
 import Sem.util.LogHandler;
 

@@ -1,8 +1,5 @@
 package Sem.Integration;
 
-import Sem.Model.ExAccounting;
-import Sem.Model.ExInventory;
-
 /**
  * Serves to create the external systems
  */

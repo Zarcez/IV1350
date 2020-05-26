@@ -4,7 +4,7 @@ import Sem.Controller.Controller;
 import Sem.Integration.CatalogCreator;
 import Sem.Integration.ExCreator;
 import Sem.Integration.Printer;
-import Sem.Model.NoDatabaseException;
+import Sem.Integration.NoDatabaseException;
 import Sem.View.View;
 
 import java.io.IOException;
