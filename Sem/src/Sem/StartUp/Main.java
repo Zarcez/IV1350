@@ -26,14 +26,15 @@ public class Main {
             Controller controller = new Controller(exCreator, catalogCreator, printer);
             new View(controller).test();
         }
-        catch (IOException exception){
-            System.out.println("Unable to start program");
-            exception.printStackTrace();
-        }
         catch (NoDatabaseException exception){
             System.out.println("Unable to start program");
             exception.printStackTrace();
         }
+        catch (IOException exception){
+            System.out.println("Unable to start program");
+            exception.printStackTrace();
+        }
+
 
     }
 }
